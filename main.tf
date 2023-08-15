@@ -31,9 +31,10 @@ resource "aws_instance" "blog" {
 }
 
 module "blog_sg" {
-  source = "terraform-aws-modules/security-group/aws//modules/http-80"
+  source = "terraform-aws-modules/security-group/aws"
 
   name        = "blog_sg"
+  version = "4.13.0"
   description = "Security group for web-server with HTTP ports open within VPC"
   vpc_id      = data.aws_vpc.default.id
 
