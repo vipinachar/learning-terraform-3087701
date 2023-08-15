@@ -32,15 +32,14 @@ resource "aws_instance" "blog" {
 
 module "blog_sg" {
   source = "terraform-aws-modules/security-group/aws"
-
   name        = "blog_sg"
-  version = "4.13.0"
-  description = "Security group for web-server with HTTP ports open within VPC"
+  version     = "4.13.0"
+
   vpc_id      = data.aws_vpc.default.id
 
-  ingress_rules = ["http-80-tcp", "http-443-tcp"]
+  ingress_rules       = ["http-80-tcp", "http-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
 
-  egress_rules = ["all-all"]
+  egress_rules       = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
