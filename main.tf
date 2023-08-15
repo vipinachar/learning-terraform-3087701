@@ -31,7 +31,7 @@ module "vpc" {
 
 module "blog_sg" {
   source = "terraform-aws-modules/security-group/aws"
-  name        = "blog_sg"
+  name        = "${var.environment.name}-blog"
   version     = "4.13.0"
 
   vpc_id      = module.vpc.vpc_id
@@ -47,7 +47,7 @@ module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "blog-alb"
+  name = "${var.environment.name}-blog"
 
   load_balancer_type = "application"
 
